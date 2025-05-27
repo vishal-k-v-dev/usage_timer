@@ -46,44 +46,8 @@ class _BannerAdExampleState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return (adLoaded) ?
-    Padding(
-      padding: const EdgeInsets.only(left : 12.0, right: 16.0),
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: Colors.white, width: 2.5),
-          color: Colors.white,
-        ),
-        width: MediaQuery.of(context).size.width,
-        height: _bannerAd!.size.height.toDouble(),
-        child: AdWidget(ad: _bannerAd!),  
-        ),
-    ) : 
-    Visibility(
-      visible: !adError,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-        child: Container(
-          height: _bannerAd!.size.height.toDouble(),
-          width: MediaQuery.of(context).size.width,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),
-            border: Border.all(color: const Color.fromARGB(255, 42, 42, 42), width: 2.5),
-            color: const Color.fromARGB(255, 42, 42, 42),
-          ),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: AspectRatio(
-              aspectRatio: 1/1,
-              child: CircularProgressIndicator(color: Colors.green)
-            ),
-          ),
-        ),      
-      ),
-    );
+//currently ads are disabled
+    return SizedBox();
   }
 }
 
@@ -142,33 +106,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
   @override
   Widget build(BuildContext context) {
 
-    return _isAdLoaded
-    ? Visibility(
-      visible: !_adFailedToLoad,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 12, right: 16, top: 12, bottom: 12),
-        child: Container(
-          alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width,
-          height: 100,
-          child: AdWidget(ad: _nativeAd!)
-        ),
-      ),
-      replacement: BannerAdWidget(),
-    )
-    : Visibility(
-      visible: !_adFailedToLoad,
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Container(
-          alignment: Alignment.center,
-          width: MediaQuery.of(context).size.width,
-          height: 99,
-          color: const Color.fromARGB(255, 42, 42, 42),
-          child: const CircularProgressIndicator(color: Colors.green)
-        ),
-      ),
-      replacement: BannerAdWidget(),
+    return SizedBox()
     );
   }
 }
