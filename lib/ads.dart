@@ -106,7 +106,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
   @override
   Widget build(BuildContext context) {
 
-    return SizedBox()
+    return SizedBox();
     );
   }
 }
