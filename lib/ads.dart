@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class AdUnits{
-  static const String bannerAdUnit  = "ca-app-pub-7284288989154980/7784509993";
-  static const String nativeAdUnit  = "ca-app-pub-7284288989154980/1027529955";
+class AdUnits {
+  static const String bannerAdUnit = "ca-app-pub-7284288989154980/7784509993";
+  static const String nativeAdUnit = "ca-app-pub-7284288989154980/1027529955";
   static const String interestitialAdUnit = "ca-app-pub-7284288989154980/9107547564";
 }
 
@@ -24,7 +24,7 @@ class _BannerAdExampleState extends State<BannerAdWidget> {
     _bannerAd = BannerAd(
       adUnitId: AdUnits.bannerAdUnit,
       request: const AdRequest(nonPersonalizedAds: true),
-      size: AdSize.banner, //AdSize.banner,
+      size: AdSize.banner,
       listener: BannerAdListener(
         onAdLoaded: (Ad ad) {
           adLoaded = true;
@@ -32,7 +32,9 @@ class _BannerAdExampleState extends State<BannerAdWidget> {
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           ad.dispose();
-          setState((){adError = true;});
+          setState(() {
+            adError = true;
+          });
         },
       ),
     )..load();
@@ -46,11 +48,9 @@ class _BannerAdExampleState extends State<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-//currently ads are disabled
     return SizedBox();
   }
 }
-
 
 class NativeAdWidget extends StatefulWidget {
   @override
@@ -70,7 +70,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
 
   void _loadNativeAd() {
     _nativeAd = NativeAd(
-      adUnitId: AdUnits.nativeAdUnit,     
+      adUnitId: AdUnits.nativeAdUnit,
       listener: NativeAdListener(
         onAdLoaded: (ad) {
           setState(() {
@@ -88,9 +88,9 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
       nativeTemplateStyle: NativeTemplateStyle(
         templateType: TemplateType.small,
         callToActionTextStyle: NativeTemplateTextStyle(
-          backgroundColor: Colors.green, 
+          backgroundColor: Colors.green,
           textColor: Colors.white,
-        )
+        ),
       ),
     );
 
@@ -105,17 +105,13 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     return SizedBox();
-    );
   }
 }
 
 class AdManager {
-  // AdMob InterstitialAd instance
   InterstitialAd? _interstitialAd;
 
-  // Method to initialize and load the interstitial ad
   void loadInterstitialAd() {
     InterstitialAd.load(
       adUnitId: AdUnits.interestitialAdUnit,
@@ -131,7 +127,6 @@ class AdManager {
     );
   }
 
-  // Method to show the interstitial ad
   void showInterstitialAd() {
     if (_interstitialAd != null) {
       _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
@@ -147,9 +142,7 @@ class AdManager {
     }
   }
 
-  // Dispose method to clean up resources
   void dispose() {
     _interstitialAd?.dispose();
   }
 }
-
